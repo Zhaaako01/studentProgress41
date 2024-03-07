@@ -1,0 +1,668 @@
+.main_page {
+    background-image: url(../images/bcimg2.jpg);
+    background-size: cover;
+    height: 100vh;
+}
+
+.navbar {
+    position: absolute;
+    top: 25px;
+    left: 0;
+    width: 100%;
+}
+
+.navbar-brand {
+    margin-right: 15%;
+}
+
+.nav-link {
+    font-size: 24px;
+    font-weight: 600;
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+.log-out {
+    font-size: 18px;
+    margin-bottom: 40px;
+    font-weight: 400;
+}
+
+/*   ---   Student List page   ---   */
+
+.other_pages {
+    /*
+    background-image: url(/img/img5.jpg);
+    */
+    background-color: #CFD8DC;
+    background-size: cover;
+    height: 100vh;
+}
+
+.std-list {
+    padding-top: 17vh;
+    height: 100vh;
+
+}
+
+.col-sm-4 {
+    width: 50%;
+    margin: auto;
+    padding-left: 20px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+
+}
+
+.button-28 {
+    appearance: none;
+    background-color: transparent;
+    border: 2px solid #1A1A1A;
+    border-radius: 15px;
+    box-sizing: border-box;
+    color: #3B3B3B;
+    cursor: pointer;
+    display: inline-block;
+    font-family: Roobert, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-size: 16px;
+    font-weight: 600;
+    line-height: normal;
+    margin: 0;
+    min-height: 60px;
+    min-width: 0;
+    outline: none;
+    padding: 16px 24px;
+    text-align: center;
+    text-decoration: none;
+    transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    width: 100%;
+    will-change: transform;
+}
+
+.button-28:disabled {
+    pointer-events: none;
+}
+
+.button-28:hover {
+    color: #fff;
+    background-color: #1A1A1A;
+    box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+    transform: translateY(-2px);
+}
+
+.button-28:active {
+    box-shadow: none;
+    transform: translateY(0);
+}
+
+.col-sm-8 {
+    padding-top: 50px;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.std-list-name {
+    font-size: 26px;
+    margin: 20px 0;
+    text-align: center;
+}
+
+.std-table {
+
+    li {
+        border-radius: 3px;
+        padding: 25px 30px;
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 25px;
+    }
+
+    .table-header {
+        background-color: #95A5A6;
+        font-size: 14px;
+        text-transform: uppercase;
+        letter-spacing: 0.03em;
+    }
+
+    .table-row {
+        background-color: #ffffff;
+        box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.1);
+    }
+
+    .col-1 {
+        flex-basis: 5%;
+    }
+
+    .col-2 {
+        flex-basis: 20%;
+    }
+
+    .col-3 {
+        flex-basis: 25%;
+    }
+
+    .col-4 {
+        flex-basis: 25%;
+    }
+
+    .col-5 {
+        flex-basis: 25%;
+    }
+}
+
+/*   ---   Student Modifiying page   ---   */
+
+.go-back {
+    margin-top: -60px;
+}
+
+.std-modifying-sec {
+    padding-top: 17vh;
+    height: 100vh;
+}
+
+.std-mdf-h2 {
+    font-size: 28px;
+    margin: 20px 0;
+    text-align: center;
+}
+
+.std-mod-form {
+    margin: 20%;
+    margin-top: 40px;
+}
+
+.std-mod-form label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.std-mod-form input[type="text"],
+.std-mod-form input[type="date"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.std-mod-form input[type="submit"] {
+    background-color: #1A1A1A;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/*   ---   Disciplines List page   ---   */
+
+.disciplines-list {
+    padding-top: 17vh;
+    height: 100vh;
+    display: flex;
+}
+
+.col-sm-6_2 {
+    padding: 20px;
+    padding-top: 85px;
+    max-width: 28%;
+    margin-right: 18%;
+}
+
+.col-sm-6_1 {
+    flex-grow: 1;
+    padding-top: 15px;
+    padding-right: 30px;
+    margin-left: 15%;
+}
+
+.dsp-list-name {
+    font-size: 26px;
+    margin: 20px 0;
+    text-align: left;
+    margin-left: 15%;
+
+}
+
+.dsp-table {
+
+    li {
+        border-radius: 3px;
+        padding: 25px 30px;
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 15px;
+    }
+
+    .table-header {
+        background-color: #95A5A6;
+        font-size: 14px;
+        text-transform: uppercase;
+        letter-spacing: 0.03em;
+    }
+
+    .table-row {
+        background-color: #ffffff;
+        box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.1);
+    }
+
+    .col-1 {
+        flex-basis: 10%;
+    }
+
+    .col-2 {
+        flex-basis: 90%;
+    }
+
+}
+
+/*   ---   Disciplines Modifiying page   ---   */
+
+.dsp-modifying-sec {
+    padding-top: 20vh;
+    height: 100vh;
+}
+
+.dsp-mdf-h2 {
+    font-size: 23px;
+    margin: 20px 0;
+    text-align: center;
+}
+
+.dsp-mod-form {
+    font-size: 20px;
+    margin: 20%;
+    margin-top: 40px;
+}
+
+.dsp-mod-form label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.dsp-mod-form input[type="text"],
+.dsp-mod-form input[type="date"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.dsp-mod-form input[type="submit"] {
+    background-color: #1A1A1A;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/*   ---   Disciplines Creating page   ---   */
+
+.dsp-crt-h2 {
+    font-size: 28px;
+    margin: 20px 0;
+    text-align: center;
+}
+
+/*   ---   Student Progress page   ---   */
+
+.std_progress {
+    padding-top: 20vh;
+    height: 100vh;
+}
+
+.show_std_info {
+    padding-top: 0px;
+    max-width: 1270px;
+    margin-left: 15%;
+}
+
+.std_progress_h2 {
+    font-size: 25px;
+    margin-bottom: 15px;
+    text-align: left;
+    margin-left: 3%;
+}
+
+.std-progress-table {
+    li {
+        border-radius: 0px;
+        padding: 15px 20px;
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 5px;
+    }
+
+    .std-prg-table-header {
+        background-color: #95A5A6;
+        font-size: 14px;
+        text-transform: uppercase;
+        letter-spacing: 0.03em;
+    }
+
+    .table-row {
+        background-color: #ffffff;
+        box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.1);
+    }
+
+    .col-1 {
+        visibility: hidden;
+        flex-basis: 5%;
+    }
+
+    .col-2 {
+        flex-basis: 20%;
+    }
+
+    .col-3 {
+        flex-basis: 25%;
+    }
+
+    .col-4 {
+        flex-basis: 25%;
+    }
+
+    .col-5 {
+        flex-basis: 25%;
+    }
+}
+
+
+.std-progr-list {
+    padding-top: 20px;
+    height: 100vh;
+    display: flex;
+
+    .col-sm-6_2 {
+        padding: 20px;
+        padding-top: 20px;
+        max-width: 28%;
+        margin-right: 18%;
+    }
+
+    .col-sm-6_1 {
+        flex-grow: 1;
+        padding-top: 15px;
+        padding-right: 30px;
+        margin-left: 15%;
+    }
+}
+
+.std-prog-table {
+
+    li {
+        border-radius: 3px;
+        padding: 15px 20px;
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 5px;
+    }
+
+    .table-header {
+        background-color: #95A5A6;
+        font-size: 14px;
+        text-transform: uppercase;
+        letter-spacing: 0.03em;
+    }
+
+    .table-row {
+        background-color: #ffffff;
+        box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.1);
+    }
+
+    .col-1 {
+        visibility: hidden;
+        flex-basis: 5%;
+    }
+
+    .col-2 {
+        flex-basis: 80%;
+    }
+
+    .col-3 {
+        flex-basis: 15%;
+    }
+
+}
+
+.std_avr_grd_label {
+    margin-top: 15px;
+    font-size: 24px;
+}
+
+select {
+    background: #95A5A6;
+    flex: 1;
+    padding: 0 .5em;
+    color: #000000;
+    cursor: pointer;
+    font-size: 1.2em;
+}
+
+.select {
+    position: relative;
+    display: flex;
+    max-width: 415px;
+    height: 50px;
+    line-height: 3;
+    background: #ffffff;
+    overflow: hidden;
+    border-radius: 3px;
+}
+
+.select::after {
+    content: '\25BC';
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0 1em;
+    background: #ffffff;
+    cursor: pointer;
+    pointer-events: none;
+    transition: .25s all ease;
+
+}
+
+.select:hover::after {
+    color: #76747897;
+}
+
+
+/*   ---   TERMS LIST PAGE   ---   */
+
+.terms-list {
+    padding-top: 20vh;
+    height: 100vh;
+}
+
+.semester-selection {
+    margin: auto;
+    margin-left: 17%;
+}
+
+
+
+.button-40 {
+    display: inline-block;
+    outline: none;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1;
+    border-radius: 10px;
+    transition-property: background-color, border-color, color, box-shadow, filter;
+    border: 1px solid transparent;
+    letter-spacing: 2px;
+    min-width: 160px;
+    text-transform: uppercase;
+    white-space: normal;
+    font-weight: 700;
+    text-align: center;
+    padding: 16px 14px 18px;
+    color: #616467;
+    box-shadow: inset 0 0 0 1px #616467;
+    background-color: transparent;
+    height: 44px;
+    font-family: Roobert, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+.button-40:hover {
+    color: #fff;
+    background-color: #1A1A1A;
+    box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+    transform: translateY(-2px);
+}
+
+.semester-info {
+    margin: auto;
+    margin-left: 17%;
+    font-size: 25px;
+    padding-top: 15px;
+}
+
+
+.semester_dsp_list{
+    padding-top: 5px;
+    height: 100vh;
+    display: flex;
+
+    .col-sm-6_2 {
+        padding: 20px;
+        padding-top: 85px;
+        max-width: 28%;
+        margin-right: 18%;
+    }
+    
+    .col-sm-6_1 {
+        flex-grow: 1;
+        padding-top: 15px;
+        padding-right: 30px;
+        margin-left: 15%;
+    }
+    
+    .smstr-dsp-list-name {
+        font-size: 26px;
+        margin: 20px 0;
+        text-align: left;
+        margin-left: 15%;
+    
+    }
+    
+    .smstr-dsp-table {
+    
+        li {
+            border-radius: 3px;
+            padding: 20px 30px;
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+    
+        .table-header {
+            background-color: #95A5A6;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+    
+        .table-row {
+            background-color: #ffffff;
+            box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.1);
+        }
+    
+        .col-1 {
+            flex-basis: 5%;
+            visibility: hidden;
+        }
+    
+        .col-2 {
+            flex-basis: 95%;
+        }
+    
+    }
+}
+
+/*   ---   TERMS CREATING PAGE   ---   */
+
+.smstr-creating-sec {
+    padding-top: 17vh;
+    height: 100vh;
+}
+
+.smstr-crt-h2{
+    font-size: 25px;
+    margin: 20px 0;
+    text-align: center;
+}
+
+
+.smstr-for {
+    padding-left: 17%;
+    padding-right: 17%;
+  }
+  input[type='number'], select[multiple] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+
+  select[multiple] {
+    height: 150px;
+  }
+
+  #okno {
+    width: 350px;
+    height: 120px;
+    text-align: center;
+    padding: 15px;
+    border: 2px solid #000000;
+    font-size: 18px;
+ 
+    border-radius: 10px;
+    color: #000000;
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+  }
+  #okno:target {display: block;}
+  .close {
+    display: inline-block;
+    width: 120px;
+    border: 1px solid #1A1A1A;
+    color: #3B3B3B;
+    padding: 0 10px;
+    margin: 10px;
+    text-decoration: none;
+    background: #CFD8DC;
+    font-size: 11pt;
+    cursor:pointer;
+  }
+  .close:hover {
+    color: #fff;
+    background-color: #1A1A1A;
+    box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+    transform: translateY(-2px);
+}
+
+
+/*   ---   TERMS MODIFYING PAGE   ---   */
+
+

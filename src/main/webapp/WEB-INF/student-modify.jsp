@@ -74,7 +74,8 @@
         <input type="text" id="group" name="group" value="${studentById.group}"><br><br>
 
         <label for="datepicker">Дата поступления:</label>
-        <input type="text" id="datepicker" name="admission-date" value="${studentById.date}"><br><br>
+        <input type="text" id="datepicker" name="admission-date" value="<fmt:formatDate value="${studentById.date}"
+                                                                                 pattern="dd/MM/yyyy"/>"><br><br>
 
         <input class="button-28" type="submit" value="Применить">
 

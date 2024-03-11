@@ -13,8 +13,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="../resources/css/style.css">
-    <script type="text/javascript" src="../resources/js/functions.js"></script>
-
+    <script type="text/javascript" src="../resources/js/functions.js?v=12"></script>
 </head>
 
 <body class="other_pages">
@@ -38,12 +37,13 @@
 <section class="std-list">
 
     <div class="col-sm-4">
-        <a href="student_progress.html" class="button-28" type="button" id="sdt_progress">Посмотреть успеваемость
+        <a onclick="studentProgress()" class="button-28" type="submit" id="sdt_progress">Посмотреть успеваемость
             выбранных студентов</a>
         <a href="/student-create" class="button-28" type="button" id="create_sdt">Создать студента...</a>
         <a onclick="studentModify()" class="button-28" type="submit" id="modify_sdt">Модифицировать выбранного
             студента...</a>
-        <button class="button button-28" type="button" id="delete_sdt">Удалить выбранных студентов</button>
+        <a onclick="studentDelete()" class="button-28" type="submit" id="delete_sdt">Удалить выбранных
+            студентов...</a>
     </div>
 
     <div class="col-sm-8">
@@ -59,7 +59,8 @@
 
             <c:forEach items="${activeStudents}" var="st">
                 <li class="table-row">
-                    <div class="col col-1" data-label="slct"><input class="checkbox" type="checkbox" value="${st.id}"></div>
+                    <div class="col col-1" data-label="slct"><input class="checkbox" type="checkbox" value="${st.id}">
+                    </div>
                     <div class="col col-2" data-label="std-fullname">${st.surname}</div>
                     <div class="col col-3" data-label="std-name">${st.name}</div>
                     <div class="col col-4" data-label="std-group">${st.group}</div>
@@ -84,10 +85,16 @@
 
 
 <form action="/student-modify" method="get" id="formToModify">
-<input type="hidden" name="hiddenModifyID" id = "hiddenToModify">
-
+    <input type="hidden" name="hiddenModifyID" id="hiddenToModify">
 </form>
 
+<form action="/student-delete" method="get" id="formToDelete">
+    <input type="hidden" name="hiddenIdsToDelete" id="hiddenIdsToDelete">
+</form>
+
+<form action="/student-progress" method="get" id="formToProgress">
+    <input type="hidden" name="hiddenIdToProgress" id="hiddenIdToProgress">
+</form>
 
 </body>
 

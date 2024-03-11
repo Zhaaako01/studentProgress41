@@ -72,7 +72,18 @@ public class DBManager {
             Class.forName("com.mysql.jdbc.Driver");
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/students_41?user=root&password=Qwerty123");
             Statement stmt = conn.createStatement();
-            stmt.execute("UPDATE `student` SET `surname` = '"+surname+"', `name` = '"+name+"', `groupe` = '"+group+"', `date` = '"+date+"' WHERE (`id` = '"+id+"');");
+            stmt.execute("UPDATE `student` SET `surname` = '" + surname + "', `name` = '" + name + "', `groupe` = '" + group + "', `date` = '" + date + "' WHERE (`id` = '" + id + "');");
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static void deleteStudent(String id) {
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/students_41?user=root&password=Qwerty123");
+            Statement stmt = conn.createStatement();
+            stmt.execute("UPDATE `student` SET `status` = '0' WHERE (`id` = '" + id + "');");
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

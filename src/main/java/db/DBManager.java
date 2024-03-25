@@ -18,9 +18,9 @@ public class DBManager {
         ArrayList<Student> students = new ArrayList<>();
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/students_41?user=root&password=Qwerty123");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/students_41?user=root&password=password");
             Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM students_41.student where status = 1;");
+            ResultSet rs = stmt.executeQuery("SELECT * FROM student where status = 1");
             while (rs.next()) {
                 Student student = new Student();
                 student.setId(rs.getInt("id"));
@@ -40,7 +40,7 @@ public class DBManager {
     public static void createNewStudent(String surname, String name, String group, String date) {
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/students_41?user=root&password=Qwerty123");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/students_41?user=root&password=password");
             Statement stmt = conn.createStatement();
             stmt.execute("INSERT INTO `student` (`surname`, `name`, `groupe`, `date`) VALUES ('" + surname + "', '" + name + "', '" + group + "', '" + date + "');");
         } catch (Exception e) {
@@ -52,7 +52,7 @@ public class DBManager {
 
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/students_41?user=root&password=Qwerty123");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/students_41?user=root&password=password");
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT * FROM student where status = 1 and id =" + id);
             while (rs.next()) {
@@ -73,7 +73,7 @@ public class DBManager {
     public static void modifyStudentById(String surname, String name, String group, String date, String id) {
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/students_41?user=root&password=Qwerty123");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/students_41?user=root&password=password");
             Statement stmt = conn.createStatement();
             stmt.execute("UPDATE `student` SET `surname` = '" + surname + "', `name` = '" + name + "', `groupe` = '" + group + "', `date` = '" + date + "' WHERE (`id` = '" + id + "');");
         } catch (Exception e) {
@@ -84,7 +84,7 @@ public class DBManager {
     public static void deleteStudent(String id) {
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/students_41?user=root&password=Qwerty123");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/students_41?user=root&password=password");
             Statement stmt = conn.createStatement();
             stmt.execute("UPDATE `student` SET `status` = '0' WHERE (`id` = '" + id + "');");
         } catch (Exception e) {
@@ -96,7 +96,7 @@ public class DBManager {
         ArrayList<Term> terms = new ArrayList<>();
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/students_41?user=root&password=Qwerty123");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/students_41?user=root&password=password");
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT * FROM term where status = '1'");
             while (rs.next()) {
@@ -115,7 +115,7 @@ public class DBManager {
     public static Term getTermByID(String id) {
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/students_41?user=root&password=Qwerty123");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/students_41?user=root&password=password");
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT * FROM term where status = '1' and id = '" + id + "'");
             while (rs.next()) {
@@ -135,7 +135,7 @@ public class DBManager {
         ArrayList<Mark> marks = new ArrayList<>();
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/students_41?user=root&password=Qwerty123");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/students_41?user=root&password=password");
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT d.id, d.disclipline_name, m.mark FROM mark as m\n" +
                     "left join term_discipline as td on m.id_term_discipline = td.id\n" +

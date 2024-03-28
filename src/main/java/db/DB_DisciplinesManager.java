@@ -21,8 +21,8 @@ public class DB_DisciplinesManager {
     public static List<Discipline> getAllActiveDisciplines() {
         ArrayList<Discipline> disciplines = new ArrayList<>();
         try {
-//            Class.forName("com.mysql.jdbc.Driver");
-            Connection conn = DriverManager.getConnection(url,user,password);
+            Class.forName(driverName);
+            Connection conn = DriverManager.getConnection(url, user, password);
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery("select * from discipline where status = '1'");
             while (rs.next()) {
@@ -35,5 +35,17 @@ public class DB_DisciplinesManager {
             throw new RuntimeException(e);
         }
         return disciplines;
+    }
+
+    public static void createNewDiscipline(String disciplineName) {
+
+        try {
+            Class.forName(driverName);
+            Connection conn = DriverManager.getConnection(url, user, password);
+            Statement stmt = conn.createStatement();
+            stmt.execute("INSERT INTO `discipline`(`disclipline_name`) VALUES('" + disciplineName + "')");
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 }

@@ -31,7 +31,7 @@
 <nav class="navbar navbar-expand-lg">
     <div class="container">
 
-        <a class="navbar-brand" href="main_page.html">
+        <a class="navbar-brand" href="../index.jsp">
             <img src="../resources/images/logo.png" alt="logo">
         </a>
 
@@ -51,7 +51,7 @@
 
                 <li class="nav-item">
                     <a class="nav-link log-out" href="sign_in_and_up.html">log out</a>
-                    <a class="nav-link go-back" href="student_list.html">Назад</a>
+                    <a class="nav-link go-back" href="students">Назад</a>
                 </li>
 
             </ul>

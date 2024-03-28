@@ -50,7 +50,7 @@
     </div>
 
     <div class="col-sm-6_2">
-        <a href="discipline_creating.html" class="button-28" type="button" id="create_dsp" style="margin-bottom: 10px;">Создать дисциплину...</a>
+        <a href="/discipline-create" class="button-28" type="button" id="create_dsp" style="margin-bottom: 10px;">Создать дисциплину...</a>
         <a href="discipline_modifying.html" class="button-28" type="button" id="modify_dsp" style="margin-bottom: 10px;">Модифицировать выбранную дисциплину...</a>
         <a href="#" class="button-28" type="button" id="delete_dsp">Удалить выбранную дисциплину...</a>
     </div>

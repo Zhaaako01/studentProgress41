@@ -8,5 +8,5 @@ public interface Connection {
 
     String user = "root";
 
-    String password = "Qwerty123";
+    String password = "password";
 }

@@ -12,6 +12,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="../../resources/css/style.css">
+    <script type="text/javascript" src="../../resources/js/functions.js?v=2"></script>
 </head>
 
 <body class="other_pages">
@@ -42,7 +43,8 @@
             </li>
             <c:forEach items="${activeDisciplines}" var="dscp">
             <li class="table-row">
-                <div class="col col-1" data-label="slct"><input class="checkbox" type="checkbox" value="${dscp.id}"></div>
+                <div class="col col-1" data-label="slct"><input class="checkbox" type="checkbox" value="${dscp.id}">
+                </div>
                 <div class="col col-2" data-label="std-fullname">${dscp.discipline_name}</div>
             </li>
             </c:forEach>
@@ -51,7 +53,7 @@
 
     <div class="col-sm-6_2">
         <a href="/discipline-create" class="button-28" type="button" id="create_dsp" style="margin-bottom: 10px;">Создать дисциплину...</a>
-        <a href="discipline_modifying.html" class="button-28" type="button" id="modify_dsp" style="margin-bottom: 10px;">Модифицировать выбранную дисциплину...</a>
+        <a onclick="disciplineModify()" class="button-28" type="submit" id="modify_dsp" style="margin-bottom: 10px;">Модифицировать выбранную дисциплину...</a>
         <a href="#" class="button-28" type="button" id="delete_dsp">Удалить выбранную дисциплину...</a>
     </div>
 
@@ -67,6 +69,11 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
         integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
         crossorigin="anonymous"></script>
+
+
+<form action="/discipline-modify" method="get" id="formToModify">
+    <input type="hidden" name="hiddenModifyID" id="hiddenToModify">
+</form>
 
 
 </body>

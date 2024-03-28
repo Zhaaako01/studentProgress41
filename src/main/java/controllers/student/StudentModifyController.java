@@ -1,7 +1,7 @@
-package controllers;
+package controllers.student;
 
-import db.DBManager;
-import entity.Student;
+import db.DB_StudentsManager;
+import entities.Student;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -22,7 +22,7 @@ public class StudentModifyController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String idStudToModify = req.getParameter("hiddenModifyID");
-        Student student = DBManager.getStudentById(idStudToModify);
+        Student student = DB_StudentsManager.getStudentById(idStudToModify);
 
         req.setAttribute("studentById", student);
         req.getRequestDispatcher("WEB-INF/student-modify.jsp").forward(req, resp);
@@ -61,7 +61,7 @@ public class StudentModifyController extends HttpServlet {
         Format formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String dateToDatabase = formatter.format(dateObj);
 
-        DBManager.modifyStudentById(surname, name, group, dateToDatabase, idStudToModify);
+        DB_StudentsManager.modifyStudentById(surname, name, group, dateToDatabase, idStudToModify);
 
         resp.sendRedirect("/students");
     }

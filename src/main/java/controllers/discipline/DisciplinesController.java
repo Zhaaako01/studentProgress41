@@ -1,7 +1,7 @@
-package controllers.disciplines;
+package controllers.discipline;
 
 import db.DB_DisciplinesManager;
-import entity.Discipline;
+import entities.Discipline;
 
 import java.io.IOException;
 import java.util.List;

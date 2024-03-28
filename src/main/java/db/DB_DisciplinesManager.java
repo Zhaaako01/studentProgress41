@@ -1,6 +1,6 @@
 package db;
 
-import entity.Discipline;
+import entities.Discipline;
 
 
 import java.sql.Connection;
@@ -44,6 +44,35 @@ public class DB_DisciplinesManager {
             Connection conn = DriverManager.getConnection(url, user, password);
             Statement stmt = conn.createStatement();
             stmt.execute("INSERT INTO `discipline`(`disclipline_name`) VALUES('" + disciplineName + "')");
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static Discipline getDisciplineById(String id) {
+        try {
+            Class.forName(driverName);
+            Connection conn = DriverManager.getConnection(url, user, password);
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery("select * from discipline where status = '1' and id =" + id);
+            while (rs.next()) {
+                Discipline discipline = new Discipline();
+                discipline.setId(rs.getInt(1));
+                discipline.setDiscipline_name(rs.getString(2));
+                return discipline;
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return null;
+    }
+
+    public static void modifyDisciplineByID(String disciplineName, String idDisciplineToModify) {
+        try {
+            Class.forName(driverName);
+            Connection conn = DriverManager.getConnection(url, user, password);
+            Statement stmt = conn.createStatement();
+            stmt.execute("UPDATE `discipline` SET `disclipline_name` = '" + disciplineName + "' WHERE (`id` = '" + idDisciplineToModify + "');");
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

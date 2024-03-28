@@ -31,10 +31,9 @@
 /*   ---   Student List page   ---   */
 
 .other_pages {
-    /*
-    background-image: url(/img/img5.jpg);
-    */
-    background-color: #CFD8DC;
+
+    background-image: url(../images/imgW.webp);
+    /*background-color: #CFD8DC;*/
     background-size: cover;
     height: 100vh;
 }
@@ -116,7 +115,7 @@
 
 .std-table {
 
-    li {
+    .li {
         border-radius: 3px;
         padding: 25px 30px;
         display: flex;
@@ -157,7 +156,7 @@
     }
 }
 
-/*   ---   Student Modifiying page   ---   */
+/*   ---   Student Modifying page   ---   */
 
 .go-back {
     margin-top: -60px;
@@ -235,7 +234,7 @@
 
 .dsp-table {
 
-    li {
+    .li {
         border-radius: 3px;
         padding: 25px 30px;
         display: flex;
@@ -265,7 +264,7 @@
 
 }
 
-/*   ---   Disciplines Modifiying page   ---   */
+/*   ---   Disciplines Modifying page   ---   */
 
 .dsp-modifying-sec {
     padding-top: 20vh;
@@ -337,7 +336,7 @@
 }
 
 .std-progress-table {
-    li {
+    .li {
         border-radius: 0px;
         padding: 15px 20px;
         display: flex;
@@ -402,7 +401,7 @@
 
 .std-prog-table {
 
-    li {
+    .li {
         border-radius: 3px;
         padding: 15px 20px;
         display: flex;
@@ -562,7 +561,7 @@ select {
     
     .smstr-dsp-table {
     
-        li {
+        .li {
             border-radius: 3px;
             padding: 20px 30px;
             display: flex;

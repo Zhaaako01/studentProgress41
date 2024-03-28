@@ -1,7 +1,7 @@
-package controllers;
+package controllers.student;
 
-import db.DBManager;
-import entity.Student;
+import db.DB_StudentsManager;
+import entities.Student;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,7 +16,7 @@ public class StudentsController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        List<Student> students = DBManager.getAllActiveStudents();
+        List<Student> students = DB_StudentsManager.getAllActiveStudents();
         req.setAttribute("activeStudents", students);
         req.getRequestDispatcher("WEB-INF/students.jsp").forward(req, resp);
     }

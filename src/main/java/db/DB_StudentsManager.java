@@ -1,9 +1,9 @@
 package db;
 
-import entity.Discipline;
-import entity.Mark;
-import entity.Student;
-import entity.Term;
+import entities.Discipline;
+import entities.Mark;
+import entities.Student;
+import entities.Term;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -12,7 +12,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DBManager {
+public class DB_StudentsManager {
 
     public static List<Student> getAllActiveStudents() {
         ArrayList<Student> students = new ArrayList<>();

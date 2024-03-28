@@ -1,6 +1,6 @@
-package controllers;
+package controllers.student;
 
-import db.DBManager;
+import db.DB_StudentsManager;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -19,7 +19,7 @@ public class StudentDeleteController extends HttpServlet {
         // {"1", "2", "3"}
         String[] ids = idsToDelete.split(" ");
         for (String id : ids) {
-            DBManager.deleteStudent(id);
+            DB_StudentsManager.deleteStudent(id);
         }
         resp.sendRedirect("/students");
     }

@@ -1,9 +1,9 @@
-package controllers;
+package controllers.student;
 
-import db.DBManager;
-import entity.Mark;
-import entity.Student;
-import entity.Term;
+import db.DB_StudentsManager;
+import entities.Mark;
+import entities.Student;
+import entities.Term;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(name = "StudentProgressController", urlPatterns = "/student-progress")
@@ -32,11 +31,11 @@ public class StudentProgressController extends HttpServlet {
 
         // 1 to do
         String idStud = req.getParameter("hiddenIdToProgress");
-        Student student = DBManager.getStudentById(idStud);
+        Student student = DB_StudentsManager.getStudentById(idStud);
         req.setAttribute("student", student);
 
         // 2 to do
-        List<Term> terms = DBManager.getAllActiveTerms();
+        List<Term> terms = DB_StudentsManager.getAllActiveTerms();
         req.setAttribute("terms", terms);
 
         // 3 to do
@@ -47,7 +46,7 @@ public class StudentProgressController extends HttpServlet {
         // Нам передали id выбранного?
         if (req.getParameter("idSelectedTerm") != null) {
             // вытягивать с базы семестр по id
-            selectedTerm = DBManager.getTermByID(req.getParameter("idSelectedTerm"));
+            selectedTerm = DB_StudentsManager.getTermByID(req.getParameter("idSelectedTerm"));
         } else {
             // вытягивать из всех активных семестров первый
             selectedTerm = terms.get(0);
@@ -58,7 +57,7 @@ public class StudentProgressController extends HttpServlet {
 
         // 4
 
-        List<Mark> marks = DBManager.getMarksByStudentAndTerm(idStud, selectedTerm.getId());
+        List<Mark> marks = DB_StudentsManager.getMarksByStudentAndTerm(idStud, selectedTerm.getId());
         req.setAttribute("marks", marks);
 
         //5

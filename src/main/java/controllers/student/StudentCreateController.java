@@ -1,6 +1,6 @@
-package controllers;
+package controllers.student;
 
-import db.DBManager;
+import db.DB_StudentsManager;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -54,7 +54,7 @@ public class StudentCreateController extends HttpServlet {
         Format formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String dateToDatabase = formatter.format(dateObj);
 
-        DBManager.createNewStudent(surname, name, group, dateToDatabase);
+        DB_StudentsManager.createNewStudent(surname, name, group, dateToDatabase);
 
         resp.sendRedirect("/students");
     }

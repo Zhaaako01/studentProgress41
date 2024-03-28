@@ -11,15 +11,15 @@
     <title>Disciplines List</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="../../resources/css/style.css">
 </head>
 
 <body class="other_pages">
 
 <nav class="navbar navbar-expand-lg">
     <div class="container">
-        <a class="navbar-brand" href="main_page.html">
-            <img src="img/logo.png" alt="logo">
+        <a class="navbar-brand" href="../../index.jsp">
+            <img src="../../resources/images/logo.png" alt="logo">
         </a>
 
         <ul class="navbar-nav">
@@ -40,26 +40,12 @@
                 <div class="col col-1"></div>
                 <div class="col col-2">Наименование дисциплины</div>
             </li>
+            <c:forEach items="${activeDisciplines}" var="dscp">
             <li class="table-row">
-                <div class="col col-1" data-label="slct"><input type="checkbox"></div>
-                <div class="col col-2" data-label="std-fullname">Высшая математика</div>
+                <div class="col col-1" data-label="slct"><input class="checkbox" type="checkbox" value="${dscp.id}"></div>
+                <div class="col col-2" data-label="std-fullname">${dscp.discipline_name}</div>
             </li>
-            <li class="table-row">
-                <div class="col col-1" data-label="slct"><input type="checkbox"></div>
-                <div class="col col-2" data-label="std-fullname">История Науки и Техники</div>
-            </li>
-            <li class="table-row">
-                <div class="col col-1" data-label="slct"><input type="checkbox"></div>
-                <div class="col col-2" data-label="std-fullname">Политология</div>
-            </li>
-            <li class="table-row">
-                <div class="col col-1" data-label="slct"><input type="checkbox"></div>
-                <div class="col col-2" data-label="std-fullname">Информатика</div>
-            </li>
-            <li class="table-row">
-                <div class="col col-1" data-label="slct"><input type="checkbox"></div>
-                <div class="col col-2" data-label="std-fullname">Теория Алгоритмизации</div>
-            </li>
+            </c:forEach>
         </ul>
     </div>
 

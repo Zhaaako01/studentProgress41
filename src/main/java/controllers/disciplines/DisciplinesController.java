@@ -1,6 +1,10 @@
-package controllers;
+package controllers.disciplines;
+
+import db.DB_DisciplinesManager;
+import entity.Discipline;
 
 import java.io.IOException;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,6 +16,8 @@ public class DisciplinesController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+        List<Discipline> disciplines = DB_DisciplinesManager.getAllActiveDisciplines();
+        req.setAttribute("activeDisciplines", disciplines);
+        req.getRequestDispatcher("WEB-INF/disciplines/disciplines.jsp").forward(req, resp);
     }
 }

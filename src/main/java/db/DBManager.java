@@ -18,7 +18,7 @@ public class DBManager {
         ArrayList<Student> students = new ArrayList<>();
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/students_41?user=root&password=password");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/students_41?user=root&password=Qwerty123");
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT * FROM student where status = 1");
             while (rs.next()) {

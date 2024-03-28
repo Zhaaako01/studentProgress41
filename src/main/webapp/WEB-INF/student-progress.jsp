@@ -44,6 +44,17 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
+                <li class="nav-item">
+                    <a class="nav-link" href="/students">Студенты</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/disciplines">Дисциплины</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="term_list.html">Семестры</a>
+                </li>
 
             </ul>
 

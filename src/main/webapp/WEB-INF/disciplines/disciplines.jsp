@@ -23,6 +23,29 @@
             <img src="../../resources/images/logo.png" alt="logo">
         </a>
 
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/students">Студенты</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/disciplines">Дисциплины</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="term_list.html">Семестры</a>
+                </li>
+
+            </ul>
+
         <ul class="navbar-nav">
             <li class="nav-item">
                 <a class="nav-link log-out" href="sign_in_and_up.html">log out</a>
@@ -54,7 +77,7 @@
     <div class="col-sm-6_2">
         <a href="/discipline-create" class="button-28" type="button" id="create_dsp" style="margin-bottom: 10px;">Создать дисциплину...</a>
         <a onclick="disciplineModify()" class="button-28" type="submit" id="modify_dsp" style="margin-bottom: 10px;">Модифицировать выбранную дисциплину...</a>
-        <a href="#" class="button-28" type="button" id="delete_dsp">Удалить выбранную дисциплину...</a>
+        <a onclick="disciplineDelete()" class="button-28" type="button" id="delete_dsp">Удалить выбранную дисциплину...</a>
     </div>
 
 
@@ -73,6 +96,10 @@
 
 <form action="/discipline-modify" method="get" id="formToModify">
     <input type="hidden" name="hiddenModifyID" id="hiddenToModify">
+</form>
+
+<form action="/discipline-delete" method="get" id="formToDelete">
+    <input type="hidden" name="hiddenIdsToDelete" id="hiddenIdsToDelete">
 </form>
 
 

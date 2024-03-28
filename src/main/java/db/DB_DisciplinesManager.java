@@ -77,4 +77,15 @@ public class DB_DisciplinesManager {
             throw new RuntimeException(e);
         }
     }
+
+    public static void deleteDiscipline(String disciplinesIDs) {
+        try {
+            Class.forName(driverName);
+            Connection conn = DriverManager.getConnection(url, user, password);
+            Statement stmt = conn.createStatement();
+            stmt.execute("UPDATE `discipline` SET `status` = '0' WHERE (`id` = '" + disciplinesIDs + "');");
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

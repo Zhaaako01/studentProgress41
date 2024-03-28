@@ -96,3 +96,26 @@ function disciplineModify() {
     document.getElementById('hiddenToModify').value = idModify;
     document.getElementById('formToModify').submit();
 }
+
+
+function disciplineDelete() {
+    var checkedCheckboxes = document.getElementsByClassName('checkbox');
+    var countChecked = 0;
+    // 1, 4, 5
+    var idsToDelete = "";
+
+    for (var i = 0; i < checkedCheckboxes.length; i++) {
+        if (checkedCheckboxes[i].checked) {
+            countChecked++;
+            idsToDelete = idsToDelete + checkedCheckboxes[i].value + " ";
+        }
+    }
+    if (countChecked == 0) {
+        alert("Please, select at least one discipline!!!")
+        return;
+    }
+
+
+    document.getElementById('hiddenIdsToDelete').value = idsToDelete;
+    document.getElementById('formToDelete').submit();
+}

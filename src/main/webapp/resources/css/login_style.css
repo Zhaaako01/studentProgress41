@@ -216,3 +216,21 @@ input {
 	height: 40px;
 	width: 40px;
 }
+
+
+
+select {
+	display: block;
+	width: 100%;
+	padding: 10px;
+	margin: 10px 0;
+	border: 0.5px solid #ccc;
+	border-radius: 1px;
+	box-sizing: border-box;
+	background-color: #eee;
+	background-repeat: no-repeat, repeat;
+	background-position: right 0.7em top 50%, 0 0;
+	background-size: 0.65em auto, 100%;
+  }
+
+  

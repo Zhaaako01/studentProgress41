@@ -46,12 +46,19 @@
 
             </ul>
 
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link log-out" href="sign_in_and_up.html">log out</a>
-            </li>
-        </ul>
-    </div>
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <c:choose>
+                        <c:when test="${isLogin eq 1}">
+                            <a class="nav-link log-out" href="/log-out">Log out ${login}</a>
+                        </c:when>
+                        <c:otherwise>
+                            <a class="nav-link log-out" href="/login">Log in ${login}</a>
+                        </c:otherwise>
+                    </c:choose>
+                </li>
+            </ul>
+        </div>
     </div>
 </nav>
 
@@ -61,11 +68,17 @@
     <div class="col-sm-4">
         <a onclick="studentProgress()" class="button-28" type="submit" id="sdt_progress">Посмотреть успеваемость
             выбранных студентов</a>
-        <a href="/student-create" class="button-28" type="button" id="create_sdt">Создать студента...</a>
-        <a onclick="studentModify()" class="button-28" type="submit" id="modify_sdt">Модифицировать выбранного
-            студента...</a>
-        <a onclick="studentDelete()" class="button-28" type="submit" id="delete_sdt">Удалить выбранных
-            студентов...</a>
+        <c:if test="${role eq 1}">
+            <a href="/student-create" class="button-28" type="button" id="create_sdt">Создать студента...</a>
+        </c:if>
+        <c:if test="${role eq 1}">
+            <a onclick="studentModify()" class="button-28" type="submit" id="modify_sdt">Модифицировать выбранного
+                студента...</a>
+        </c:if>
+        <c:if test="${role eq 1}">
+            <a onclick="studentDelete()" class="button-28" type="submit" id="delete_sdt">Удалить выбранных
+                студентов...</a>
+        </c:if>
     </div>
 
     <div class="col-sm-8">

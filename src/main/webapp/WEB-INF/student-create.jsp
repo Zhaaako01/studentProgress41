@@ -58,7 +58,14 @@
             <ul class="navbar-nav">
 
                 <li class="nav-item">
-                    <a class="nav-link log-out" href="sign_in_and_up.html">log out</a>
+                    <c:choose>
+                        <c:when test="${isLogin eq 1}">
+                            <a class="nav-link log-out" href="/log-out">Log out ${login}</a>
+                        </c:when>
+                        <c:otherwise>
+                            <a class="nav-link log-out" href="/login">Log in ${login}</a>
+                        </c:otherwise>
+                    </c:choose>
                     <a class="nav-link go-back" href="students">Назад</a>
                 </li>
 

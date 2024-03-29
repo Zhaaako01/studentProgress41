@@ -1,4 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page isELIgnored="false" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -45,7 +47,14 @@
             <ul class="navbar-nav">
 
                 <li class="nav-item">
-                    <a class="nav-link log-out" href="sign_in_and_up.html">log out</a>
+                    <c:choose>
+                        <c:when test="${isLogin eq 1}">
+                            <a class="nav-link log-out" href="/log-out">Log out ${login}</a>
+                        </c:when>
+                        <c:otherwise>
+                            <a class="nav-link log-out" href="/login">Log in ${login}</a>
+                        </c:otherwise>
+                    </c:choose>
                 </li>
 
             </ul>

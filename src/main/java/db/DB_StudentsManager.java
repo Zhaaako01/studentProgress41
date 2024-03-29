@@ -19,8 +19,6 @@ public class DB_StudentsManager {
     public static List<Student> getAllActiveStudents() {
         ArrayList<Student> students = new ArrayList<>();
         try {
-//            Class.forName("com.mysql.jdbc.Driver");
-//            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/students_41?user=root&password=Qwerty123");
             Class.forName(driverName);
             Connection conn = DriverManager.getConnection(url, user, password);
             Statement stmt = conn.createStatement();

@@ -17,11 +17,11 @@
 <div class="container" id="container">
 
     <div class="form-container sign-up-container">
-        <form action="#">
+        <form action="/sign-up" method="post">
             <h1>Создайте аккаунт</h1>
             <img src="../../resources/images/logo.png" alt="logo">
-            <input type="text" placeholder="Логин" />
-            <input type="password" placeholder="Пароль" />
+            <input name="loginSignUp" type="text" placeholder="Логин" />
+            <input name="passwordSignUp" type="password" placeholder="Пароль" />
 
             <select id="roleSignUp" name="roleSignUp">
                 <option value="0">Выберите роль:</option>

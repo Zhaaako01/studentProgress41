@@ -68,17 +68,17 @@
     <div class="col-sm-4">
         <a onclick="studentProgress()" class="button-28" type="submit" id="sdt_progress">Посмотреть успеваемость
             выбранных студентов</a>
-        <c:if test="${role eq 1}">
+<%--        <c:if test="${role eq 1}">--%>
             <a href="/student-create" class="button-28" type="button" id="create_sdt">Создать студента...</a>
-        </c:if>
-        <c:if test="${role eq 1}">
+<%--        </c:if>--%>
+<%--        <c:if test="${role eq 1}">--%>
             <a onclick="studentModify()" class="button-28" type="submit" id="modify_sdt">Модифицировать выбранного
                 студента...</a>
-        </c:if>
-        <c:if test="${role eq 1}">
+<%--        </c:if>--%>
+<%--        <c:if test="${role eq 1}">--%>
             <a onclick="studentDelete()" class="button-28" type="submit" id="delete_sdt">Удалить выбранных
                 студентов...</a>
-        </c:if>
+<%--        </c:if>--%>
     </div>
 
     <div class="col-sm-8">

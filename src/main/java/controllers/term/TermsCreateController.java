@@ -21,8 +21,9 @@ public class TermsCreateController extends HttpServlet {
         1 - Название семестра? как оно должно формироваться?
         просто Семестр + авто инкремент номер
         (можно дать term.id только созданного семестра с помощью метода который будет доставать ResultSet rs = stmt.executeQuery("SELECT LAST_INSERT_ID();");)
+        или можно создать семестр потом этот же семестр по сгенерированному ключу изменить название
 
-        2 - Устанавливаем длительность семестра берем с формы
+        2 - Устанавливаем длительность семестра
 
         3 - Устанавливаем дисциплины со статусом 1 с база данных в форму
 
@@ -45,18 +46,19 @@ public class TermsCreateController extends HttpServlet {
 
         //   ***   1   ***   //
 
-        String termName = "Семестр ";
+        String termName = "Семестр";
 
         //   ***   2   ***   //
 
         String term_duration = req.getParameter("t_duration");
 
 
-        //   ***   EXTRA   ***   //
+        //   ***   Получения id только созданного семестра   ***   //
 
        int idOfCreatingTerm = DB_TermsManager.createTermByUsingAndGetTermID(termName, term_duration);
 
-        System.out.println(idOfCreatingTerm);
+        //   ***   Добавления к названию только созданного семестра id    ***   //
+       DB_TermsManager.addNumberForTermName(termName, idOfCreatingTerm);
 
         //   ***   4   ***   //
 
@@ -64,10 +66,10 @@ public class TermsCreateController extends HttpServlet {
 
         String[] ids = idsOfSelectedDisciplines.split(" ");
         for (String idOfSelectedDiscipline : ids) {
-//            DB_TermsManager.createTermByUsingAndGetTermID(termName, term_duration, idOfSelectedDiscipline);
+            DB_TermsManager.createTermWithDisciplines(idOfCreatingTerm, idOfSelectedDiscipline);
         }
 
-//        resp.sendRedirect("/terms");
+        resp.sendRedirect("/terms");
 
     }
 }

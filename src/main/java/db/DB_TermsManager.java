@@ -90,51 +90,17 @@ public class DB_TermsManager {
     }
 
 
-//    public static int createTermByUsingAndGetTermID(String termName, String termDuration) {
-//        String createTermQuery = "INSERT INTO `term` (`term_name`, `term_duration`) VALUES (?, ?);";
-//        int lastCreatedTermId = -1;
-//        try {
-//            Class.forName(driverName);
-//            java.sql.Connection conn = DriverManager.getConnection(url, user, password);
-//            PreparedStatement termStmn = conn.prepareStatement(createTermQuery, Statement.RETURN_GENERATED_KEYS);
-//
-//            conn.setAutoCommit(false);
-//
-//            // Добавление семестра
-//            termStmn.setString(1, termName + termStmn.getGeneratedKeys());
-//            termStmn.setString(2, termDuration);
-//            termStmn.executeUpdate();
-//
-//
-//            // Получение сгенерированного ID
-//            try (ResultSet rs = termStmn.getGeneratedKeys()) {
-//                if (rs.next()) {
-//                    lastCreatedTermId = rs.getInt(1);
-//                }
-//            }
-//
-//            conn.commit();
-//        } catch (Exception e) {
-//            throw new RuntimeException(e);
-//        }
-//        return lastCreatedTermId;
-//    }
-
     public static int createTermByUsingAndGetTermID(String termName, String termDuration) {
         String createTermQuery = "INSERT INTO `term` (`term_name`, `term_duration`) VALUES (?, ?);";
-        String updateTermQuery = "UPDATE `term` SET `term_name` = ? WHERE `term_id` = ?;";
         int lastCreatedTermId = -1;
-        PreparedStatement termStmn = null;
-        PreparedStatement updateStmn = null;
-
-        java.sql.Connection conn = null;
         try {
             Class.forName(driverName);
-            conn = DriverManager.getConnection(url, user, password);
+            java.sql.Connection conn = DriverManager.getConnection(url, user, password);
+            PreparedStatement termStmn = conn.prepareStatement(createTermQuery, Statement.RETURN_GENERATED_KEYS);
+
             conn.setAutoCommit(false);
 
-            // Вставка семестра
-            termStmn = conn.prepareStatement(createTermQuery, Statement.RETURN_GENERATED_KEYS);
+            // Добавление семестра
             termStmn.setString(1, termName);
             termStmn.setString(2, termDuration);
             termStmn.executeUpdate();
@@ -146,72 +112,32 @@ public class DB_TermsManager {
                 }
             }
 
-            // Обновление termName с использованием сгенерированного ключа
-            if (lastCreatedTermId != -1) {
-                updateStmn = conn.prepareStatement(updateTermQuery);
-                // Конкатенация termName с сгенерированным ID
-                updateStmn.setString(1, termName + lastCreatedTermId);
-                updateStmn.setInt(2, lastCreatedTermId);
-                updateStmn.executeUpdate();
-            }
-
             conn.commit();
         } catch (Exception e) {
-            if (conn != null) {
-                try {
-                    conn.rollback();
-                } catch (SQLException ex) {
-                    ex.printStackTrace();
-                }
-            }
-            e.printStackTrace();
-            throw new RuntimeException("Failed to create term and get ID", e);
-        } finally {
-            try {
-                if (termStmn != null) termStmn.close();
-                if (updateStmn != null) updateStmn.close();
-                if (conn != null) conn.close();
-            } catch (SQLException ex) {
-                ex.printStackTrace();
-            }
+            throw new RuntimeException(e);
         }
         return lastCreatedTermId;
     }
 
+    public static void createTermWithDisciplines(int termID, String idOfSelectedDiscipline) {
+        try {
+            Class.forName(driverName);
+            java.sql.Connection conn = DriverManager.getConnection(url, user, password);
+            Statement stmt = conn.createStatement();
+            stmt.execute("INSERT INTO `term_discipline` (`id_term`, `id_discipline`) VALUES ('" + termID + "', '" + idOfSelectedDiscipline + "')");
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 
-//        public static void createTermByUsingAndGetTermID(String termName, String termDuration, String idOfSelectedDiscipline) {
-//        String createTermQuery = "INSERT INTO `term` (`term_name`, `term_duration`) VALUES (?, ?);";
-//        String createTermWithDisciplinesQuery = "INSERT INTO `term_discipline` (`id_term`, `id_discipline`) VALUES (?, ?);";
-//        try {
-//            Class.forName(driverName);
-//            java.sql.Connection conn = DriverManager.getConnection(url, user, password);
-//            PreparedStatement termStmn = conn.prepareStatement(createTermQuery, Statement.RETURN_GENERATED_KEYS);
-//
-//            conn.setAutoCommit(false);
-//
-//            // Добавление семестра
-//            termStmn.setString(1, termName + termStmn.getGeneratedKeys());
-//            termStmn.setString(2, termDuration);
-//            termStmn.executeUpdate();
-//
-//
-//            // Получение сгенерированного ID
-//            try (ResultSet rs = termStmn.getGeneratedKeys()) {
-//                if (rs.next()) {
-//                    int lastCreatedTermId = rs.getInt(1);
-//
-//                    // Присвоение дисциплин к семестру
-//                    try (PreparedStatement term_dcpStmt = conn.prepareStatement(createTermWithDisciplinesQuery)) {
-//                        term_dcpStmt.setInt(1, lastCreatedTermId);
-//                        term_dcpStmt.setInt(2, Integer.parseInt(idOfSelectedDiscipline));
-//                        term_dcpStmt.executeUpdate();
-//                    }
-//                }
-//            }
-//
-//            conn.commit(); // Подтверждение транзакции
-//        } catch (Exception e) {
-//            throw new RuntimeException(e);
-//        }
-//    }
+    public static void addNumberForTermName(String nameOfLastCreatedTerm, int idOfLastCreatedTerm) {
+        try {
+            Class.forName(driverName);
+            java.sql.Connection conn = DriverManager.getConnection(url, user, password);
+            Statement stmt = conn.createStatement();
+            stmt.execute("UPDATE `term` SET `term_name` = '" + nameOfLastCreatedTerm + " " + idOfLastCreatedTerm + "' WHERE (`id` = '" + idOfLastCreatedTerm + "');");
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

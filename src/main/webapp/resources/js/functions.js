@@ -119,3 +119,55 @@ function disciplineDelete() {
     document.getElementById('hiddenIdsToDelete').value = idsToDelete;
     document.getElementById('formToDelete').submit();
 }
+
+
+// function getSelectedDisciplinesIDs() {
+//     var selectBox = document.getElementById('disciplines');
+//     var countSelected = 0;
+//     // 1, 4, 5
+//     var idsOfSelected = "";
+//
+//     for (var i = 0; i < selectBox.options.length; i++) {
+//         if (selectBox.options[i].selected) {
+//             countSelected++;
+//             idsOfSelected = idsOfSelected + selectBox.options[i].value + " ";
+//         }
+//     }
+//     if (countSelected == 0) {
+//         alert("Please, select at least one discipline!!!")
+//         return;
+//     }
+//
+//
+//     document.getElementById('hiddenIdsOfSelectedDisciplines').value = idsOfSelected;
+//     // document.getElementById('formToCreate').submit();
+// }
+
+function getSelectedDisciplinesIDs() {
+    document.querySelector('.smstr-for').addEventListener('submit', function (e) {
+        var selectBox = document.getElementById('disciplines');
+        var countSelected = 0;
+        var idsOfSelected = "";
+
+        for (var i = 0; i < selectBox.options.length; i++) {
+            if (selectBox.options[i].selected) {
+                countSelected++;
+                idsOfSelected += selectBox.options[i].value + " ";
+            }
+        }
+
+        if (countSelected == 0) {
+            alert("Please, select at least one discipline!!!");
+            e.preventDefault();
+            return;
+        }
+        document.getElementById('hiddenIdsOfSelectedDisciplines').value = idsOfSelected;
+    });
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+    getSelectedDisciplinesIDs()
+});
+
+
+

@@ -8,11 +8,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Terms List</title>
+    <title>Term Creating</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="../../resources/css/style.css">
-    <script type="text/javascript" src="../../resources/js/functions.js?v=2"></script>
+    <script type="text/javascript" src="../../resources/js/functions.js?v=6"></script>
 </head>
 
 <body class="other_pages">
@@ -59,7 +59,7 @@
                             <a class="nav-link log-out" href="/login">Log in ${login}</a>
                         </c:otherwise>
                     </c:choose>
-                    <a class="nav-link go-back" href="/">Назад</a>
+                    <a class="nav-link go-back" href="/terms">Назад</a>
                 </li>
 
             </ul>
@@ -68,69 +68,38 @@
 </nav>
 
 
-<section class="terms-list">
 
 
-    <div class="semester-selection">
-        <form action="/terms" method="get">
-        <label for="semesterSelect" style="font-size: 25px; padding-right: 40px; ;">Выбрать семестр</label>
-        <select id="semesterSelect" style="width: 250px; margin-right: 25px; height: 38px;border: 0px" name="idSelectedTerm">
-            <option value="1">Семестр 1</option>
-            <option value="2">Семестр 2</option>
-            <option value="3">Семестр 3</option>
+<section class="smstr-creating-sec">
+
+
+    <h2 class="smstr-crt-h2">Для создания семестра заполните следующие данные и нажмите кнопку "Создать".</h2>
+    <form action="/create-term" method="post" class="smstr-for">
+
+        <label for="duration" style="font-size: 20px;">Длительность (в неделях):</label>
+        <input type="number" id="duration" name="t_duration" min="1" value="24">
+
+        <label for="disciplines" style="font-size: 20px;">Дисциплины в
+            <a href="#okno"
+               class="link-body-emphasis link-offset-2 link-underline-opacity-25 link-underline-opacity-75-hover">семестре</a>:</label>
+
+        <select multiple id="disciplines" name="disciplines" style="height: 200px;">
+            <c:forEach items="${allActiveDisciplines}" var="dscp">
+            <option value="${dscp.id}">${dscp.discipline_name}</option>
+            </c:forEach>
         </select>
-        <button type="submit" class="button-40" id="slc_semestr">Выбрать</button>
-        </form>
-    </div>
+        <input type="hidden" name="hiddenIdsOfSelectedDisciplines" id="hiddenIdsOfSelectedDisciplines">
 
+        <button class="button-28" type="submit">Создать</button>
 
-
-    <h2 class="semester-info">Длительность семестра(в неделях): <span id="semester_length"><c:out value="${selectedTermDuration}"></c:out></span>
-
-<%--<c:choose>--%>
-<%--    <c:when test="${selectedTermDuration%10=='1'}">--%>
-<%--       <span>неделя</span>--%>
-<%--    </c:when>--%>
-<%--    <c:when test="${selectedTermDuration%10=='2'}, ${selectedTermDuration%10=='3'}, ${selectedTermDuration%10=='4'}">--%>
-<%--        <span>недели</span>--%>
-<%--    </c:when>--%>
-<%--</c:choose>--%>
-
-    </h2>
-
-    <div class="semester_dsp_list">
-
-        <div class="col-sm-6_1">
-            <h2 class="smstr-dsp-list-name">Список дисциплин семестра</h2>
-            <ul class="smstr-dsp-table">
-                <li class="table-header">
-                    <div class="col col-1"></div>
-                    <div class="col col-2">Наименование дисциплины</div>
-                </li>
-                <c:forEach items="${disciplines}" var="discipline">
-                <li class="table-row">
-<%--                    <div class="col col-1" data-label="slct"><input type="checkbox"></div>--%>
-                    <div class="col col-2" data-label="std-fullname">${discipline.discipline_name}</div>
-                </li>
-                </c:forEach>
-
-            </ul>
+        <div id="okno">
+            Выберите несколько с помощью кнопок Ctrl или Shift<br>
+            <a href="#" class="close">Закрыть окно</a>
         </div>
-
-        <div class="col-sm-6_2">
-            <a href="/create-term" class="button-28" type="button" id="create_dsp" style="margin-bottom: 10px;">Создать семестр...</a>
-            <a href="term_modifying.html" class="button-28" type="button" id="modify_dsp" style="margin-bottom: 10px;">Модифицировать текущий семестр...</a>
-            <a href="#" class="button-28" type="button" id="delete_dsp">Удалить текущий семестр</a>
-        </div>
-
-    </div>
-
-
+    </form>
 
 
 </section>
-
-
 
 
 
@@ -149,6 +118,12 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
         integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
         crossorigin="anonymous"></script>
+
+
+<%--<form action="/create-term" method="get" id="formToCreate">--%>
+<%--    <input type="hidden" name="hiddenIdsOfSelectedDisciplines" id="hiddenIdsOfSelectedDisciplines">--%>
+<%--</form>--%>
+
 
 
 </body>

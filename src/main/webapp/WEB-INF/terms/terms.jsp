@@ -73,28 +73,29 @@
 
     <div class="semester-selection">
         <form action="/terms" method="get">
-        <label for="semesterSelect" style="font-size: 25px; padding-right: 40px; ;">Выбрать семестр</label>
-        <select id="semesterSelect" style="width: 250px; margin-right: 25px; height: 38px;border: 0px" name="idSelectedTerm">
-            <option value="1">Семестр 1</option>
-            <option value="2">Семестр 2</option>
-            <option value="3">Семестр 3</option>
+        <label for="semesterSelect" style="font-size: 25px; padding-right: 40px; ;">Выберите семестр</label>
+
+        <select class="selectbox" id="semesterSelect" style="width: 250px; margin-right: 25px; height: 38px;border: 0px" name="idSelectedTerm">
+            <c:forEach items="${terms}" var="t">
+                <c:choose>
+                <c:when test="${t.id eq selectedTerm.id}">
+                    <option selected value="${t.id}">${t.termName}</option>
+                </c:when>
+                <c:otherwise>
+                    <option value="${t.id}">${t.termName}</option>
+                </c:otherwise>
+                </c:choose>
+            </c:forEach>
         </select>
+
         <button type="submit" class="button-40" id="slc_semestr">Выбрать</button>
         </form>
     </div>
 
 
 
-    <h2 class="semester-info">Длительность семестра(в неделях): <span id="semester_length"><c:out value="${selectedTermDuration}"></c:out></span>
+    <h2 class="semester-info">Длительность семестра: <span id="semester_length"><c:out value="${selectedTermDuration}"></c:out></span><c:out value="${wordWeek}"></c:out>
 
-<%--<c:choose>--%>
-<%--    <c:when test="${selectedTermDuration%10=='1'}">--%>
-<%--       <span>неделя</span>--%>
-<%--    </c:when>--%>
-<%--    <c:when test="${selectedTermDuration%10=='2'}, ${selectedTermDuration%10=='3'}, ${selectedTermDuration%10=='4'}">--%>
-<%--        <span>недели</span>--%>
-<%--    </c:when>--%>
-<%--</c:choose>--%>
 
     </h2>
 
@@ -109,7 +110,6 @@
                 </li>
                 <c:forEach items="${disciplines}" var="discipline">
                 <li class="table-row">
-<%--                    <div class="col col-1" data-label="slct"><input type="checkbox"></div>--%>
                     <div class="col col-2" data-label="std-fullname">${discipline.discipline_name}</div>
                 </li>
                 </c:forEach>
@@ -119,7 +119,7 @@
 
         <div class="col-sm-6_2">
             <a href="/create-term" class="button-28" type="button" id="create_dsp" style="margin-bottom: 10px;">Создать семестр...</a>
-            <a href="term_modifying.html" class="button-28" type="button" id="modify_dsp" style="margin-bottom: 10px;">Модифицировать текущий семестр...</a>
+            <a onclick="termModify()" class="button-28" type="button" id="modify_dsp" style="margin-bottom: 10px;">Модифицировать текущий семестр...</a>
             <a href="#" class="button-28" type="button" id="delete_dsp">Удалить текущий семестр</a>
         </div>
 
@@ -149,6 +149,11 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
         integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
         crossorigin="anonymous"></script>
+
+
+<form action="/modify-term" method="get" id="formToModify">
+    <input type="hidden" name="hiddenModifyID" id="hiddenToModify">
+</form>
 
 
 </body>

@@ -41,7 +41,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="term_list.html">Семестры</a>
+                    <a class="nav-link" href="/terms">Семестры</a>
                 </li>
 
             </ul>

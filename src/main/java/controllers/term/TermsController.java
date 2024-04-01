@@ -25,9 +25,10 @@ public class TermsController extends HttpServlet {
 
         2 - вытягиваем длительность выбранного семестра
 
+        Экстра - спрягать слово неделя смотря на длительность выбранного семестра
+
         3 - вытягиваем все дисциплины выбранного семестра
          */
-
 
 
         // получаем все семестры
@@ -51,6 +52,19 @@ public class TermsController extends HttpServlet {
         //   ***   2   ***   //
 
         int selectedTermDuration = DB_TermsManager.getTermDurationBy(selectedTerm.getId());
+
+        //   ***   Экстра - чтобы спрягать слово неделя   ***   //
+        String wordWeek;
+        if (selectedTermDuration % 10 == 1) {
+            wordWeek = " неделя";
+        }
+        else if (selectedTermDuration % 10 == 2 || selectedTermDuration % 10 == 3 || selectedTermDuration % 10 == 4){
+            wordWeek = " недели";
+        } else {
+            wordWeek = " недель";
+        }
+
+        req.setAttribute("wordWeek", wordWeek);
         req.setAttribute("selectedTermDuration", selectedTermDuration);
 
 

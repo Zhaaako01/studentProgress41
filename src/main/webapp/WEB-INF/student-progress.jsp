@@ -15,9 +15,9 @@
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
     <script>
-        $( function() {
-            $( "#datepicker" ).datepicker({dateFormat: 'dd/mm/yy' });
-        } );
+        $(function () {
+            $("#datepicker").datepicker({dateFormat: 'dd/mm/yy'});
+        });
     </script>
 
     <script type="text/javascript" src="../resources/js/functions.js?v=12"></script>
@@ -26,7 +26,6 @@
 </head>
 
 <body class="other_pages">
-
 
 <nav class="navbar navbar-expand-lg">
     <div class="container">
@@ -53,7 +52,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="term_list.html">Семестры</a>
+                    <a class="nav-link" href="/terms">Семестры</a>
                 </li>
 
             </ul>
@@ -114,29 +113,37 @@
                 </li>
 
                 <c:forEach items="${marks}" var="m">
-                <li class="table-row">
-                    <div class="col col-2" data-label="dscp-name">${m.discipline.discipline_name}</div>
-                    <div class="col col-2" data-label="std-grade">${m.mark}</div>
-                </li>
+                    <li class="table-row">
+                        <div class="col col-2" data-label="dscp-name">${m.discipline.discipline_name}</div>
+                        <div class="col col-2" data-label="std-grade">${m.mark}</div>
+                    </li>
                 </c:forEach>
 
             </ul>
         </div>
 
         <div class="col-sm-6_2">
-
-            <div class="select">
-                <select name="format" id="format">
-                    <option selected disabled>Выбрать семестр:</option>
-                    <option value="1">Семестр 1</option>
-                    <option value="2">Семестр 2</option>
-                </select>
-
-            </div>
-            <button class="button button-28" type="button" id="slc_semestr"
-                    style="margin-top: 10px">Выбрать</button>
-
-            <p class="std_avr_grd_label">Средняя оценка за семестр: <span id="std-average-grade"><c:out value="${averageMark}" default="Оценки не поставлены"></c:out> </span> балла
+            <form action="/student-progress" method="get">
+                <input type="hidden" name="hiddenIdToProgress" id="hiddenIdToProgress" value="${student.id}">
+                <div class="select">
+                    <select name="idSelectedTerm" id="format">
+                        <c:forEach items="${terms}" var="t">
+                            <c:choose>
+                                <c:when test="${t.id eq selectedTerm.id}">
+                                    <option selected value="${t.id}">${t.termName}</option>
+                                </c:when>
+                                <c:otherwise>
+                                    <option value="${t.id}">${t.termName}</option>
+                                </c:otherwise>
+                            </c:choose>
+                        </c:forEach>
+                    </select>
+                </div>
+                <input class="button button-28" type="submit" id="slc_semestr"
+                       style="margin-top: 10px" value="Выбрать">
+            </form>
+            <p class="std_avr_grd_label">Средняя оценка за семестр: <span id="std-average-grade"><c:out
+                    value="${averageMark}" default="Оценки не поставлены"></c:out> </span> балла
             </p>
 
         </div>
@@ -144,3 +151,18 @@
     </div>
 
 </section>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+        crossorigin="anonymous"></script>
+
+
+</body>
+
+</html>

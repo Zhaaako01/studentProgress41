@@ -140,4 +140,15 @@ public class DB_TermsManager {
             throw new RuntimeException(e);
         }
     }
+
+    public static void changeDurationBy(String idOfSelectedTerm, int newDuration) {
+        try {
+            Class.forName(driverName);
+            java.sql.Connection conn = DriverManager.getConnection(url, user, password);
+            Statement stmt = conn.createStatement();
+            stmt.execute("UPDATE `term` SET `term_duration` = '" + newDuration + "' WHERE (`id` = '" + idOfSelectedTerm + "');");
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

@@ -169,5 +169,12 @@ document.addEventListener('DOMContentLoaded', function () {
     getSelectedDisciplinesIDs()
 });
 
+function termModify() {
+    var element = document.getElementById("semesterSelect");
+    var value = element.value;
+    document.getElementById('hiddenToModify').value = value;
+    document.getElementById('formToModify').submit();
+}
+
 
 

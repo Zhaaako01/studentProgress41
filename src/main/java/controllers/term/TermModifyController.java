@@ -3,6 +3,7 @@ package controllers.term;
 import db.DB_DisciplinesManager;
 import db.DB_TermsManager;
 import entities.Discipline;
+import entities.Term;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -29,16 +30,19 @@ public class TermModifyController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         //   ***   1   ***   //
-        int idOfTermToModify = Integer.parseInt(req.getParameter("hiddenModifyID"));
-        req.setAttribute("hiddenModifyID", idOfTermToModify);
+        String idOfTermToModify = req.getParameter("hiddenModifyID");
+        Term term = DB_TermsManager.getTermByID(idOfTermToModify);
+        req.setAttribute("hiddenTermId", term);
 
 
         //   ***   2   ***   //
-        List<Discipline> disciplines = DB_TermsManager.getDisciplinesByTermID(idOfTermToModify);
-        req.setAttribute("disciplinesOfTerm", disciplines);
+//        List<Discipline> disciplines = DB_TermsManager.getDisciplinesByTermID(Integer.parseInt(idOfTermToModify));
+//        req.setAttribute("disciplinesOfTerm", disciplines);
+        List<Discipline> disciplines = DB_DisciplinesManager.getAllActiveDisciplines();
+        req.setAttribute("allActiveDisciplines", disciplines);
 
         //   ***   3   ***   //
-        int selectedTermDuration = DB_TermsManager.getTermDurationBy(idOfTermToModify);
+        int selectedTermDuration = DB_TermsManager.getTermDurationBy(Integer.parseInt(idOfTermToModify));
         req.setAttribute("termDuration", selectedTermDuration);
 
         req.getRequestDispatcher("WEB-INF/terms/term-modify.jsp").forward(req, resp);
@@ -60,31 +64,28 @@ public class TermModifyController extends HttpServlet {
 
     4 - надо передать id семестра и id выбранных дисциплин в метод в бд
 
-    5 -
+    5 - Если у семестра уже есть такие дисциплины тогда не добавляем если нет то
 
      */
 
         //   ***   1   ***   //
 
-        String idOfSelectedTerm = req.getParameter("hiddenModifyID");
-
+        String idOfTermToModify = req.getParameter("hiddenTermId");
+        ;
         int selectedTermDuration = Integer.parseInt(req.getParameter("termDuration"));
 
 
-
         //   ***   2   ***   //
-        DB_TermsManager.changeDurationBy(idOfSelectedTerm, selectedTermDuration);
+//        DB_TermsManager.changeDurationBy(idOfTermToModify, selectedTermDuration);
 
         //   ***   3   ***   //
-//        String idsOfSelectedDisciplines = req.getParameter("hiddenIdsOfSelectedDisciplines");
-        System.out.println(selectedTermDuration);
-        System.out.println(idOfSelectedTerm);
+        String idsOfSelectedDisciplines = req.getParameter("hiddenIdsOfSelectedDisciplines");
 //        System.out.println(idsOfSelectedDisciplines);
 
-//        String[] ids = idsOfSelectedDisciplines.split(" ");
-//        for (String idOfSelectedDiscipline : ids) {
-////            DB_TermsManager.createTermWithDisciplines(idOfCreatingTerm, idOfSelectedDiscipline);
-//            System.out.println(idOfSelectedDiscipline);
-//        }
+        String[] ids = idsOfSelectedDisciplines.split(" ");
+        for (String idOfSelectedDiscipline : ids) {
+//            DB_TermsManager.createTermWithDisciplines(idOfCreatingTerm, idOfSelectedDiscipline);
+            System.out.println(idOfSelectedDiscipline);
+        }
     }
 }

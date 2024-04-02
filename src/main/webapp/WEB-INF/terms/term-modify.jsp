@@ -12,7 +12,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="../../resources/css/style.css">
-    <script type="text/javascript" src="../../resources/js/functions.js?v=7"></script>
+    <script type="text/javascript" src="../../resources/js/functions.js?v=9"></script>
 </head>
 
 <body class="other_pages">
@@ -80,6 +80,7 @@
         <label for="duration" style="font-size: 20px;">Длительность (в неделях):</label>
         <input type="number" id="duration" name="termDuration" min="1" value="${termDuration}">
         <input type="hidden" name="hiddenModifyID" id="hiddenToModify">
+        <input type="hidden" name="hiddenTermId" value="${hiddenTermId.id}">
 
         <label for="disciplines" style="font-size: 20px;">Дисциплины в
             <a href="#okno"
@@ -87,11 +88,10 @@
 
 
         <select multiple id="disciplines" name="disciplines" style="height: 200px;">
-            <c:forEach items="${disciplinesOfTerm}" var="dscp">
+            <c:forEach items="${allActiveDisciplines}" var="dscp">
             <option value="${dscp.id}">${dscp.discipline_name}</option>
             </c:forEach>
         </select>
-
 
         <input type="hidden" name="hiddenIdsOfSelectedDisciplines" id="hiddenIdsOfSelectedDisciplines">
 

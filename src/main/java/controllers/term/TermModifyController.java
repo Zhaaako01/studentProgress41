@@ -20,7 +20,7 @@ public class TermModifyController extends HttpServlet {
 
     1 - надо взять id семестр(он должен быть взят со страницы семестры и передан при нажатии кнопки модифицировать семестр)
 
-    2 - надо передать id семестра для показа всех дисциплин в выбранном семестре
+    2 - надо передать все активные дисциплины для показа
 
     3 - надо передать id семестра, чтобы показать длительность семестра
 
@@ -36,8 +36,6 @@ public class TermModifyController extends HttpServlet {
 
 
         //   ***   2   ***   //
-//        List<Discipline> disciplines = DB_TermsManager.getDisciplinesByTermID(Integer.parseInt(idOfTermToModify));
-//        req.setAttribute("disciplinesOfTerm", disciplines);
         List<Discipline> disciplines = DB_DisciplinesManager.getAllActiveDisciplines();
         req.setAttribute("allActiveDisciplines", disciplines);
 
@@ -60,11 +58,12 @@ public class TermModifyController extends HttpServlet {
 
     2 - надо поменять длительность с помощью id из request-a
 
-    3 - надо взять id выбранных дисциплин
+    3 - надо очистить строки дисциплин из таблицы в бд по id семестра
 
-    4 - надо передать id семестра и id выбранных дисциплин в метод в бд
+    4 - надо взять id выбранных дисциплин
 
-    5 - Если у семестра уже есть такие дисциплины тогда не добавляем если нет то
+    5 - надо передать id семестра и id выбранных дисциплин в метод в бд
+
 
      */
 
@@ -76,16 +75,22 @@ public class TermModifyController extends HttpServlet {
 
 
         //   ***   2   ***   //
-//        DB_TermsManager.changeDurationBy(idOfTermToModify, selectedTermDuration);
+        DB_TermsManager.changeDurationBy(idOfTermToModify, selectedTermDuration);
 
         //   ***   3   ***   //
+
+        DB_TermsManager.clearAllDisciplinesInTermBy(idOfTermToModify);
+
+        //   ***   4   ***   //
         String idsOfSelectedDisciplines = req.getParameter("hiddenIdsOfSelectedDisciplines");
-//        System.out.println(idsOfSelectedDisciplines);
 
         String[] ids = idsOfSelectedDisciplines.split(" ");
+
+        //   ***   5   ***   //
         for (String idOfSelectedDiscipline : ids) {
-//            DB_TermsManager.createTermWithDisciplines(idOfCreatingTerm, idOfSelectedDiscipline);
-            System.out.println(idOfSelectedDiscipline);
+            DB_TermsManager.updateDisciplinesInTermBy(idOfTermToModify, idOfSelectedDiscipline);
         }
+
+        resp.sendRedirect("/terms");
     }
 }

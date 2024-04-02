@@ -151,4 +151,28 @@ public class DB_TermsManager {
             throw new RuntimeException(e);
         }
     }
+
+    public static void updateDisciplinesInTermBy(String idOfTermToModify, String idOfSelectedDiscipline) {
+        try {
+            Class.forName(driverName);
+            java.sql.Connection conn = DriverManager.getConnection(url, user, password);
+            Statement stmt = conn.createStatement();
+            stmt.execute("INSERT INTO `term_discipline` (`id_term`, `id_discipline`) VALUES ('" + idOfTermToModify + "', '" + idOfSelectedDiscipline + "')");
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static void clearAllDisciplinesInTermBy(String idOfTerm) {
+        try {
+            Class.forName(driverName);
+            java.sql.Connection conn = DriverManager.getConnection(url, user, password);
+            Statement stmt = conn.createStatement();
+            stmt.execute("DELETE td FROM term_discipline AS td\n" +
+                    "JOIN discipline AS d ON td.id_discipline = d.id\n" +
+                    "WHERE td.id_term = '"+idOfTerm+"' AND d.status = '1';");
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

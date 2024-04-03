@@ -32,7 +32,7 @@ public class DisciplineModifyController extends HttpServlet {
 
         if (discipline_name == null || discipline_name.isEmpty()) {
             req.setAttribute("message", "1");
-            req.getRequestDispatcher("WEB-INF/disciplines/discipline-create.jsp").forward(req, resp);
+            req.getRequestDispatcher("WEB-INF/disciplines/discipline-modify.jsp").forward(req, resp);
             return;
         }
 

@@ -50,7 +50,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="term_list.html">Семестры</a>
+                    <a class="nav-link" href="/terms">Семестры</a>
                 </li>
 
             </ul>
@@ -98,7 +98,10 @@
         <input class="button-28" type="submit" value="Применить">
 
         <c:if test="${message eq 1}">
-            <h3>Поля не должны быть пустыми</h3>
+            <div class="warning-container">
+                <span class="warning-icon">&#9888;</span>
+                <span class="warning-text">Поля не должны быть пустыми</span>
+            </div>
         </c:if>
     </form>
 

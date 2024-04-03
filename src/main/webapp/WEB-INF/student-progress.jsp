@@ -115,7 +115,7 @@
                 <c:forEach items="${marks}" var="m">
                     <li class="table-row">
                         <div class="col col-2" data-label="dscp-name">${m.discipline.discipline_name}</div>
-                        <div class="col col-2" data-label="std-grade">${m.mark}</div>
+                        <div class="col col-2" style="padding-left: 50px;" data-label="std-grade">${m.mark}</div>
                     </li>
                 </c:forEach>
 

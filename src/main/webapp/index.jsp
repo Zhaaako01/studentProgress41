@@ -18,7 +18,7 @@
 <nav class="navbar navbar-expand-lg">
     <div class="container">
 
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="/">
             <img src="resources/images/logo.png" alt="logo">
         </a>
 

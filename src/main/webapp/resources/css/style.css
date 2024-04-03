@@ -381,7 +381,6 @@
 
 .std-progr-list {
     padding-top: 20px;
-    height: 100vh;
     display: flex;
 
     .col-sm-6_2 {
@@ -662,6 +661,28 @@ select {
 }
 
 
-/*   ---   TERMS MODIFYING PAGE   ---   */
+.warning-container {
+    padding: 20px;
+    background-color: #fff8db;
+    border: 1px solid #ffd700;
+    color: #856404;
+    text-align: center;
+    margin: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.warning-container .warning-icon {
+    font-size: 24px;
+    margin-right: 8px;
+}
+
+.warning-text {
+    font-size: 18px;
+    font-weight: bold;
+    display: inline-block;
+    vertical-align: middle;
+}
+
 
 

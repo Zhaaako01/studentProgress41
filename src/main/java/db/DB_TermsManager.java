@@ -175,4 +175,26 @@ public class DB_TermsManager {
             throw new RuntimeException(e);
         }
     }
+
+    public static void deleteTermBy(String idTerm) {
+        try {
+            Class.forName(driverName);
+            java.sql.Connection conn = DriverManager.getConnection(url, user, password);
+            Statement stmt = conn.createStatement();
+            stmt.execute("UPDATE `students_41`.`term` SET `status` = '0' WHERE (`id` = '"+idTerm+"');");
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static void deleteTermInTermDisciplineTableBy(String idTermToDelete) {
+        try {
+            Class.forName(driverName);
+            java.sql.Connection conn = DriverManager.getConnection(url, user, password);
+            Statement stmt = conn.createStatement();
+            stmt.execute("DELETE td FROM term_discipline AS td WHERE td.id_term = '"+idTermToDelete+"' ");
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

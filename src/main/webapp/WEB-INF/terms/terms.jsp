@@ -12,7 +12,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="../../resources/css/style.css">
-    <script type="text/javascript" src="../../resources/js/functions.js?v=2"></script>
+    <script type="text/javascript" src="../../resources/js/functions.js?v=3"></script>
 </head>
 
 <body class="other_pages">
@@ -120,7 +120,7 @@
         <div class="col-sm-6_2">
             <a href="/create-term" class="button-28" type="button" id="create_dsp" style="margin-bottom: 10px;">Создать семестр...</a>
             <a onclick="termModify()" class="button-28" type="button" id="modify_dsp" style="margin-bottom: 10px;">Модифицировать текущий семестр...</a>
-            <a href="#" class="button-28" type="button" id="delete_dsp">Удалить текущий семестр</a>
+            <a onclick="termToDelete()" class="button-28" type="submit" id="delete_dsp">Удалить текущий семестр</a>
         </div>
 
     </div>
@@ -153,6 +153,10 @@
 
 <form action="/modify-term" method="get" id="formToModify">
     <input type="hidden" name="hiddenModifyID" id="hiddenToModify">
+</form>
+
+<form action="/term-delete" method="get" id="formToDelete">
+    <input type="hidden" name="hiddenToDelete" id="hiddenToDelete">
 </form>
 
 

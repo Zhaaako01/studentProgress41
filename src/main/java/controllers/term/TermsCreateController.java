@@ -37,13 +37,16 @@ public class TermsCreateController extends HttpServlet {
 
         List<Discipline> disciplines = DB_DisciplinesManager.getAllActiveDisciplines();
         req.setAttribute("allActiveDisciplines", disciplines);
+
+        String message = req.getParameter("message");
+        if ("1".equals(message)) {
+            req.setAttribute("message", "1");
+        }
         req.getRequestDispatcher("WEB-INF/terms/term-create.jsp").forward(req, resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-
         //   ***   1   ***   //
 
         String termName = "Семестр";
@@ -51,7 +54,10 @@ public class TermsCreateController extends HttpServlet {
         //   ***   2   ***   //
 
         String term_duration = req.getParameter("t_duration");
-
+        if (term_duration == null || term_duration.isEmpty()) {
+            resp.sendRedirect("/create-term?message=1");
+            return;
+        }
 
         //   ***   Получения id только созданного семестра   ***   //
 

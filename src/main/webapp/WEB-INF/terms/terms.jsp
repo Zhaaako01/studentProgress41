@@ -59,7 +59,6 @@
                             <a class="nav-link log-out" href="/login">Log in ${login}</a>
                         </c:otherwise>
                     </c:choose>
-                    <a class="nav-link go-back" href="/">Назад</a>
                 </li>
 
             </ul>

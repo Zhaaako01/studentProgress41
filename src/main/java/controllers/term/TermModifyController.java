@@ -43,6 +43,10 @@ public class TermModifyController extends HttpServlet {
         int selectedTermDuration = DB_TermsManager.getTermDurationBy(Integer.parseInt(idOfTermToModify));
         req.setAttribute("termDuration", selectedTermDuration);
 
+//        if ("1".equals(req.getParameter("message"))) {
+//            req.setAttribute("message", "1");
+//        }
+
         req.getRequestDispatcher("WEB-INF/terms/term-modify.jsp").forward(req, resp);
     }
 
@@ -70,8 +74,13 @@ public class TermModifyController extends HttpServlet {
         //   ***   1   ***   //
 
         String idOfTermToModify = req.getParameter("hiddenTermId");
-        ;
-        int selectedTermDuration = Integer.parseInt(req.getParameter("termDuration"));
+        String selectedTermDuration = req.getParameter("termDuration");
+//        if (selectedTermDuration == null || selectedTermDuration.isEmpty()) {
+////            req.setAttribute("message", "1");
+////            req.getRequestDispatcher("WEB-INF/terms/term-modify.jsp").forward(req, resp);
+//            resp.sendRedirect("/modify-term?message=1");
+//            return;
+//        }
 
 
         //   ***   2   ***   //

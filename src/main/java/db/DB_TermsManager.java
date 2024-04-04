@@ -141,7 +141,7 @@ public class DB_TermsManager {
         }
     }
 
-    public static void changeDurationBy(String idOfSelectedTerm, int newDuration) {
+    public static void changeDurationBy(String idOfSelectedTerm, String newDuration) {
         try {
             Class.forName(driverName);
             java.sql.Connection conn = DriverManager.getConnection(url, user, password);

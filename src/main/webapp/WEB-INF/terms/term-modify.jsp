@@ -78,7 +78,8 @@
     <form action="/modify-term" method="post" class="smstr-for">
 
         <label for="duration" style="font-size: 20px;">Длительность (в неделях):</label>
-        <input type="number" id="duration" name="termDuration" min="1" value="${termDuration}">
+<%--        <input type="number" id="duration" name="termDuration" min="1" value="${termDuration}">--%>
+        <input type="number" id="duration" name="termDuration" min="1" value="${hiddenTermId.duration}">
         <input type="hidden" name="hiddenModifyID" id="hiddenToModify">
         <input type="hidden" name="hiddenTermId" value="${hiddenTermId.id}">
 
@@ -101,7 +102,12 @@
             Выберите несколько с помощью кнопок Ctrl или Shift<br>
             <a href="#" class="close">Закрыть окно</a>
         </div>
-
+        <c:if test="${message eq 1}">
+            <div class="warning-container">
+                <span class="warning-icon">&#9888;</span>
+                <span class="warning-text">Поля не должны быть пустыми</span>
+            </div>
+        </c:if>
     </form>
 
 

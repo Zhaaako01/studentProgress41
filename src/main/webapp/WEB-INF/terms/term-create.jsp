@@ -96,6 +96,12 @@
             Выберите несколько с помощью кнопок Ctrl или Shift<br>
             <a href="#" class="close">Закрыть окно</a>
         </div>
+        <c:if test="${message eq 1}">
+            <div class="warning-container">
+                <span class="warning-icon">&#9888;</span>
+                <span class="warning-text">Поля не должны быть пустыми</span>
+            </div>
+        </c:if>
     </form>
 
 
@@ -120,9 +126,6 @@
         crossorigin="anonymous"></script>
 
 
-<%--<form action="/create-term" method="get" id="formToCreate">--%>
-<%--    <input type="hidden" name="hiddenIdsOfSelectedDisciplines" id="hiddenIdsOfSelectedDisciplines">--%>
-<%--</form>--%>
 
 
 

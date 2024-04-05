@@ -20,17 +20,23 @@
         <form action="/sign-up" method="post">
             <h1>Создайте аккаунт</h1>
             <img src="../../resources/images/logo.png" alt="logo">
-            <input name="loginSignUp" type="text" placeholder="Логин" />
-            <input name="passwordSignUp" type="password" placeholder="Пароль" />
+            <input name="loginSignUp" type="text" placeholder="Логин"/>
+            <input name="passwordSignUp" type="password" placeholder="Пароль"/>
 
             <select id="roleSignUp" name="roleSignUp">
                 <option value="0">Выберите роль:</option>
-                <option value="1">Администратор</option>
-                <option value="2">Студент</option>
-                <option value="3">Учитель</option>
+                <c:forEach items="${roles}" var="r">
+                    <option value="${r.id}">${r.role}</option>
+                </c:forEach>
             </select>
 
             <button type="submit" style="margin-top: 5px;">Зарегистрироваться</button>
+            <c:if test="${message eq 1}">
+                <div class="warning-container">
+                    <span class="warning-icon">&#9888;</span>
+                    <span class="warning-text" style="font-size: large">Заполните все поля!</span>
+                </div>
+            </c:if>
         </form>
     </div>
 
@@ -38,25 +44,31 @@
         <form action="/login" method="post">
             <h1>Войти в систему</h1>
             <img src="../../resources/images/logo.png" alt="logo">
-            <input name="login" type="text" placeholder="Логин" />
-            <input name="password" type="text" placeholder="Пароль" />
+            <input name="login" type="text" placeholder="Логин"/>
+            <input name="password" type="text" placeholder="Пароль"/>
 
             <select id="role" name="role">
                 <option value="0">Выберите роль:</option>
-                <option value="1">Администратор</option>
-                <option value="2">Студент</option>
-                <option value="3">Учитель</option>
+                <c:forEach items="${roles}" var="r">
+                    <option value="${r.id}">${r.role}</option>
+                </c:forEach>
             </select>
 
             <button type="submit">Войти</button>
 
 
-
             <c:if test="${message eq 1}">
-                <h3>Пожалуйста, заполните все поля!!!</h3>
+                <div class="warning-container">
+                    <span class="warning-icon">&#9888;</span>
+                    <span class="warning-text" style="font-size: large">Заполните все поля!</span>
+                </div>
             </c:if>
+
             <c:if test="${message eq 2}">
-                <h3>Пользователь не найден!!!</h3>
+                <div class="warning-container">
+                    <span class="warning-icon">&#9888;</span>
+                    <span class="warning-text" style="font-size: large">Пользователь не найден!</span>
+                </div>
             </c:if>
 
         </form>
@@ -76,7 +88,6 @@
         </div>
     </div>
 </div>
-
 
 
 <script src="../../resources/js/login.js"></script>

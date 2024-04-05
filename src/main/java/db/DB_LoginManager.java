@@ -1,8 +1,11 @@
 package db;
 
+import entities.Role;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import static db.Connection.*;
 
@@ -25,5 +28,24 @@ public class DB_LoginManager {
             throw new RuntimeException(e);
         }
         return false;
+    }
+
+    public static List<Role> getAllRoles() {
+        ArrayList<Role> roles = new ArrayList<>();
+        try {
+            Class.forName(driverName);
+            java.sql.Connection conn = DriverManager.getConnection(url, user, password);
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT * FROM role");
+            while (rs.next()) {
+                Role role = new Role();
+                role.setId(rs.getInt("id"));
+                role.setRole(rs.getString("role"));
+                roles.add(role);
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return roles;
     }
 }
